@@ -21,7 +21,8 @@ namespace CadastroLivros.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook([FromBody] Book book)
         {
-            var validationResult = _bookValidator.Validate(book);
+            var validator = new BookValidator();
+            var validationResult = validator.Validate(book);
 
             if (!validationResult.IsValid)
             {
@@ -40,7 +41,7 @@ namespace CadastroLivros.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBook(int id, [FromBody] Book book)
+        public async Task<IActionResult> UpdateBook(Guid id, [FromBody] Book book)
         {
             if (id != book.Id)
             {
@@ -73,7 +74,7 @@ namespace CadastroLivros.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBook(int id)
+        public async Task<IActionResult> DeleteBook(Guid id)
         {
             var book = await _bookRepository.GetByIdAsync(id);
             if (book == null)

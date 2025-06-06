@@ -10,31 +10,12 @@ namespace CadastroLivros.Infra
         {
         }
 
-        public BookDbContext()
-        {
-        }
-
         public DbSet<Book> Books { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=localhost,1433;Database=CadastroLivrosDB;User ID=sa;Password=@Abc1234;TrustServerCertificate=True;");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new BookConfigurations());
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Book>().ToTable("Books");
-            modelBuilder.Entity<Book>().HasKey(l => l.Id);
-            modelBuilder.Entity<Book>().Property(l => l.Title).IsRequired().HasMaxLength(200);
-            modelBuilder.Entity<Book>().Property(l => l.Author).IsRequired().HasMaxLength(100);
-            modelBuilder.Entity<Book>().Property(l => l.PublicationDate).IsRequired();
-            modelBuilder.Entity<Book>().Property(l => l.Category).IsRequired().HasMaxLength(50);
-            modelBuilder.Entity<Book>().Property(l => l.Publisher).IsRequired().HasMaxLength(100);
-            modelBuilder.Entity<Book>().Property(l => l.ISBN13).IsRequired().HasMaxLength(13);
         }
     }
 }

@@ -19,7 +19,7 @@ public class BookRepository : IBookRepository
         return await _context.Books.ToListAsync();
     }
 
-    public async Task<Book?> GetByIdAsync(int id)
+    public async Task<Book?> GetByIdAsync(Guid id)
     {
         return await _context.Books.FindAsync(id);
     }
@@ -52,7 +52,7 @@ public class BookRepository : IBookRepository
         return book;
     }
 
-    public async Task RemoveAsync(int id)
+    public async Task RemoveAsync(Guid id)
     {
         var book = await _context.Books.FindAsync(id);
         if (book != null)

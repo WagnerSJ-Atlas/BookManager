@@ -27,6 +27,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\CadastroLivros.Application.csproj": {
+                "projectPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\CadastroLivros.Application.csproj"
+              },
               "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Domain\\CadastroLivros.Domain.csproj": {
                 "projectPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Domain\\CadastroLivros.Domain.csproj"
               },
@@ -51,10 +54,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[11.3.1, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.16, )"
@@ -79,6 +78,72 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\CadastroLivros.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\CadastroLivros.Application.csproj",
+        "projectName": "CadastroLivros.Application",
+        "projectPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\CadastroLivros.Application.csproj",
+        "packagesPath": "C:\\Users\\WagnerdaSilva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\WagnerdaSilva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Domain\\CadastroLivros.Domain.csproj": {
+                "projectPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Domain\\CadastroLivros.Domain.csproj"
+              },
+              "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Infra\\CadastroLivros.Infra.csproj": {
+                "projectPath": "C:\\Users\\WagnerdaSilva\\Pessoal\\Projetos\\WebAPI\\CadastroLivros.Infra\\CadastroLivros.Infra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

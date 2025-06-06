@@ -9,6 +9,7 @@ C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\ne
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\CadastroLivros.Infra.AssemblyInfoInputs.cache
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\CadastroLivros.Infra.AssemblyInfo.cs
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\CadastroLivros.Infra.csproj.CoreCompileInputs.cache
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\CadastroLivros.Infra.sourcelink.json
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\Cadastro.C53A1493.Up2Date
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\CadastroLivros.Infra.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Infra\obj\Debug\net8.0\refint\CadastroLivros.Infra.dll

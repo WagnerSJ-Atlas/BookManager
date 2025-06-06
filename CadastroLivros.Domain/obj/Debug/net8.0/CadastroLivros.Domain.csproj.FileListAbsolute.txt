@@ -1,12 +1,13 @@
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\bin\Debug\net8.0\CadastroLivros.Domain.deps.json
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\bin\Debug\net8.0\CadastroLivros.Domain.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\bin\Debug\net8.0\CadastroLivros.Domain.pdb
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.csproj.AssemblyReference.cache
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.AssemblyInfoInputs.cache
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.AssemblyInfo.cs
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.csproj.CoreCompileInputs.cache
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.sourcelink.json
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\refint\CadastroLivros.Domain.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.pdb
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\ref\CadastroLivros.Domain.dll
-C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.Domain\obj\Debug\net8.0\CadastroLivros.Domain.csproj.AssemblyReference.cache

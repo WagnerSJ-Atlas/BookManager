@@ -15,8 +15,6 @@ C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\FluentValidation.dll
-C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
-C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
@@ -76,3 +74,6 @@ C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8.0\CadastroLivros.API.pdb
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8.0\CadastroLivros.API.genruntimeconfig.cache
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8.0\ref\CadastroLivros.API.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8.0\CadastroLivros.API.sourcelink.json
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\CadastroLivros.Application.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\CadastroLivros.Application.pdb
