@@ -77,3 +77,8 @@ C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\obj\Debug\net8.0\CadastroLivros.API.sourcelink.json
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\CadastroLivros.Application.dll
 C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\CadastroLivros.Application.pdb
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Humanizer.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\WagnerdaSilva\Pessoal\Projetos\WebAPI\CadastroLivros.API\bin\Debug\net8.0\System.CodeDom.dll

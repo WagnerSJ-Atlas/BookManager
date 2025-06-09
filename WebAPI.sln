@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -7,6 +7,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroLivros.Domain", "CadastroLivros.Domain\CadastroLivros.Domain.csproj", "{5F72CD67-8887-9977-CDB6-14271CCAEF5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroLivros.Infra", "CadastroLivros.Infra\CadastroLivros.Infra.csproj", "{80ACA164-B58F-6E1C-70A0-C99B0032E5E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroLivros.Application", "CadastroLivros.Application\CadastroLivros.Application.csproj", "{ED1BA039-2C85-4AF8-94A6-092FFB9AA01A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{80ACA164-B58F-6E1C-70A0-C99B0032E5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80ACA164-B58F-6E1C-70A0-C99B0032E5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80ACA164-B58F-6E1C-70A0-C99B0032E5E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1BA039-2C85-4AF8-94A6-092FFB9AA01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1BA039-2C85-4AF8-94A6-092FFB9AA01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1BA039-2C85-4AF8-94A6-092FFB9AA01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1BA039-2C85-4AF8-94A6-092FFB9AA01A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

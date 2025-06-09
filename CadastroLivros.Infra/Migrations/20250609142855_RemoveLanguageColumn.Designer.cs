@@ -4,6 +4,7 @@ using CadastroLivros.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroLivros.Infra.Migrations
 {
     [DbContext(typeof(BookDbContext))]
-    partial class LivroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250609142855_RemoveLanguageColumn")]
+    partial class RemoveLanguageColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -23,14 +23,12 @@ namespace CadastroLivros.Application.Services
         }
 
         public async Task<Book> AddBookAsync(Book book)
-        {
-            // Lógica adicional antes de salvar, se necessário
+{
             return await _bookRepository.AddAsync(book);
         }
 
         public async Task<Book> UpdateBookAsync(Book book)
         {
-            // Lógica adicional antes de atualizar, se necessário
             return await _bookRepository.UpdateAsync(book);
         }
 
