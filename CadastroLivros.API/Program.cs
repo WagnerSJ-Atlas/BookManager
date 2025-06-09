@@ -1,5 +1,4 @@
 using CadastroLivros.Infra;
-using CadastroLivros.Application.Services;
 using CadastroLivros.Domain.Interfaces;
 using CadastroLivros.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
