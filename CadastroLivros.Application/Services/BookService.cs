@@ -1,40 +1,82 @@
-using CadastroLivros.Domain.Interfaces;
 using CadastroLivros.Domain.Entities;
+using CadastroLivros.Domain.Validators;
+using CadastroLivros.Domain.Interfaces;
 
-namespace CadastroLivros.Application.Services
+public class BookService
 {
-    public class BookService
+    private readonly IBookRepository _bookRepository;
+    private readonly BookValidator _bookValidator;
+
+    public BookService(IBookRepository bookRepository)
     {
-        private readonly IBookRepository _bookRepository;
+        _bookRepository = bookRepository;
+        _bookValidator = new BookValidator();
+    }
 
-        public BookService(IBookRepository bookRepository)
+    public async Task<Book> AddBookAsync(Book book)
+    {
+        var validationResult = _bookValidator.Validate(book);
+        if (!validationResult.IsValid)
         {
-            _bookRepository = bookRepository;
+            throw new ArgumentException("Erro de validação: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
         }
 
-        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+        return await _bookRepository.AddAsync(book);
+    }
+
+    public async Task<Book> UpdateBookAsync(Guid id, Book book)
+    {
+        if (id != book.Id)
         {
-            return await _bookRepository.GetAllAsync();
+            throw new ArgumentException("O ID passado não corresponde ao ID do livro.");
         }
 
-        public async Task<Book?> GetBookByIdAsync(Guid id)
+        var existingBook = await _bookRepository.GetByIdAsync(id);
+        if (existingBook == null)
         {
-            return await _bookRepository.GetByIdAsync(id);
+            throw new KeyNotFoundException("Livro não encontrado.");
         }
 
-        public async Task<Book> AddBookAsync(Book book)
-{
-            return await _bookRepository.AddAsync(book);
-        }
-
-        public async Task<Book> UpdateBookAsync(Book book)
+        var validationResult = _bookValidator.Validate(book);
+        if (!validationResult.IsValid)
         {
-            return await _bookRepository.UpdateAsync(book);
+            throw new ArgumentException("Erro de validação: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
         }
 
-        public async Task RemoveBookAsync(Guid id)
+        existingBook.Title = book.Title;
+        existingBook.Author = book.Author;
+        existingBook.PublicationDate = book.PublicationDate;
+        existingBook.Category = book.Category;
+        existingBook.Publisher = book.Publisher;
+        existingBook.ISBN13 = book.ISBN13;
+
+        return await _bookRepository.UpdateAsync(existingBook);
+    }
+
+    public async Task RemoveBookAsync(Guid id)
+    {
+        var book = await _bookRepository.GetByIdAsync(id);
+        if (book == null)
         {
-            await _bookRepository.RemoveAsync(id);
+            throw new KeyNotFoundException("Livro não encontrado.");
         }
+
+        await _bookRepository.RemoveAsync(id);
+    }
+
+    public async Task<IEnumerable<Book>> GetAllBooksAsync()
+    {
+        return await _bookRepository.GetAllAsync();
+    }
+
+    public async Task<Book> GetBookByIdAsync(Guid id)
+    {
+        var book = await _bookRepository.GetByIdAsync(id);
+        if (book == null)
+        {
+            throw new KeyNotFoundException("Livro não encontrado.");
+        }
+
+        return book;
     }
 }

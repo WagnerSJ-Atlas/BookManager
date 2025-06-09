@@ -1,7 +1,5 @@
 using CadastroLivros.Domain.Entities;
-using CadastroLivros.Domain.Validators;
 using Microsoft.AspNetCore.Mvc;
-using CadastroLivros.Application.Services;
 
 namespace CadastroLivros.API.Controllers
 {
@@ -9,14 +7,12 @@ namespace CadastroLivros.API.Controllers
     [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly BookValidator _bookValidator;
         private readonly BookService _bookService;
         private readonly ILogger<BookController> _logger;
 
         public BookController(BookService bookService, ILogger<BookController> logger)
         {
             _bookService = bookService;
-            _bookValidator = new BookValidator();
             _logger = logger;
         }
 
@@ -25,19 +21,17 @@ namespace CadastroLivros.API.Controllers
         {
             try
             {
-                var validationResult = _bookValidator.Validate(book);
-
-                if (!validationResult.IsValid)
-                {
-                    return BadRequest(validationResult.Errors);
-                }
-
                 var bookResponse = await _bookService.AddBookAsync(book);
                 return CreatedAtAction(nameof(GetBooks), new { id = bookResponse.Id }, bookResponse);
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocorreu um erro ao adicionar o livro: " + ex.Message);
+                _logger.LogError(ex, "Erro ao adicionar o livro.");
+                return StatusCode(500, "Ocorreu um erro ao adicionar o livro.");
             }
         }
 
@@ -51,8 +45,9 @@ namespace CadastroLivros.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocorreu um erro ao recuperar os livros: " + ex.Message);
-            }    
+                _logger.LogError(ex, "Erro ao recuperar os livros.");
+                return StatusCode(500, "Ocorreu um erro ao recuperar os livros.");
+            }
         }
 
         [HttpPut("{id}")]
@@ -60,37 +55,21 @@ namespace CadastroLivros.API.Controllers
         {
             try
             {
-                if (id != book.Id)
-                {
-                    return BadRequest("O ID passado não corresponde ao ID do livro.");
-                }
-
-                var existingBook = await _bookService.GetBookByIdAsync(id);
-                if (existingBook == null)
-                {
-                    return NotFound("Livro não encontrado.");
-                }
-
-                var validationResult = _bookValidator.Validate(book);
-
-                if (!validationResult.IsValid)
-                {
-                    return BadRequest(validationResult.Errors);
-                }
-                existingBook.Title = book.Title;
-                existingBook.Author = book.Author;
-                existingBook.PublicationDate = book.PublicationDate;
-                existingBook.Category = book.Category;
-                existingBook.Publisher = book.Publisher;
-                existingBook.ISBN13 = book.ISBN13;
-
-                await _bookService.UpdateBookAsync(existingBook);
-                return Ok(existingBook);    
+                var updatedBook = await _bookService.UpdateBookAsync(id, book);
+                return Ok(updatedBook);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Livro não encontrado.");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro ao atualizar o livro com ID {Id}", id);
-                return StatusCode(500, "Ocorreu um erro ao atualizar o livro: " + ex.Message);
+                return StatusCode(500, "Ocorreu um erro ao atualizar o livro.");
             }
         }
 
@@ -99,17 +78,17 @@ namespace CadastroLivros.API.Controllers
         {
             try
             {
-                var book = await _bookService.GetBookByIdAsync(id);
-                if (book == null)
-                {
-                    return NotFound("Livro não encontrado.");
-                }
                 await _bookService.RemoveBookAsync(id);
                 return Ok("Livro removido com sucesso.");
             }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Livro não encontrado.");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocorreu um erro ao remover o livro: " + ex.Message);
+                _logger.LogError(ex, "Erro ao remover o livro com ID {Id}", id);
+                return StatusCode(500, "Ocorreu um erro ao remover o livro.");
             }
         }
     }

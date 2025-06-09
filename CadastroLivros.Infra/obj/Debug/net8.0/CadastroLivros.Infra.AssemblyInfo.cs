@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CadastroLivros.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7376a74a4a085deec164bd5c11bebcfb198fa1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2396d41bf0a019f67c02c01e1f0fb8eb983b0bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("CadastroLivros.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CadastroLivros.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
