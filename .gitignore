@@ -3,6 +3,27 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Pastas geradas automaticamente pelo .NET
+bin/
+obj/
+
+# Arquivos de configuração do Visual Studio
+.vscode/
+*.user
+*.suo
+
+# Arquivos de log
+*.log
+
+# Arquivos de build
+*.dll
+*.exe
+*.pdb
+
+# Outros arquivos desnecessários
+*.cache
+*.vs/
+
 # User-specific files
 *.rsuser
 *.suo
