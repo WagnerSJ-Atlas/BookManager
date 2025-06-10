@@ -7,7 +7,7 @@ namespace CadastroLivros.API.Controllers
     [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly BookService _bookService;
+        private readonly IBookService _bookService;
         private readonly ILogger<BookController> _logger;
 
         public BookController(BookService bookService, ILogger<BookController> logger)

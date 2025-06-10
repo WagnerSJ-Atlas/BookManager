@@ -1,7 +1,6 @@
 using CadastroLivros.Domain.Entities;
 using CadastroLivros.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using CadastroLivros.Infra;
 
 namespace CadastroLivros.Infra.Repositories;
 
@@ -21,7 +20,13 @@ public class BookRepository : IBookRepository
 
     public async Task<Book?> GetByIdAsync(Guid id)
     {
-        return await _context.Books.FindAsync(id);
+        var book = await _context.Books.FindAsync(id);
+        if (book == null)
+        {
+            throw new KeyNotFoundException("Livro não encontrado.");
+        }
+
+        return book;
     }
 
     public async Task<IEnumerable<Book>> GetByFilterAsync(string? title, string? author, DateTime? publicationDate, string? category)

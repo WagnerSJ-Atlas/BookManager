@@ -2,7 +2,7 @@ using CadastroLivros.Domain.Entities;
 using CadastroLivros.Domain.Validators;
 using CadastroLivros.Domain.Interfaces;
 
-public class BookService
+public class BookService : IBookService
 {
     private readonly IBookRepository _bookRepository;
     private readonly BookValidator _bookValidator;
@@ -69,7 +69,7 @@ public class BookService
         return await _bookRepository.GetAllAsync();
     }
 
-    public async Task<Book> GetBookByIdAsync(Guid id)
+    public async Task<Book?> GetBookByIdAsync(Guid id)
     {
         var book = await _bookRepository.GetByIdAsync(id);
         if (book == null)
