@@ -2,6 +2,9 @@ using CadastroLivros.Infra;
 using CadastroLivros.Domain.Interfaces;
 using CadastroLivros.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
+using CadastroLivros.Application.Mappings;
+
+MapsterConfig.RegisterMappings();
 
 var builder = WebApplication.CreateBuilder(args);
 

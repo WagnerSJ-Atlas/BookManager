@@ -1,95 +1,55 @@
-using CadastroLivros.Domain.Entities;
+using CadastroLivros.Application.DTOs;
+using CadastroLivros.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CadastroLivros.API.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class BookController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class BookController : ControllerBase
+    private readonly IBookService _iBookService;
+
+    public BookController(IBookService bookService)
     {
-        private readonly IBookService _bookService;
-        private readonly ILogger<BookController> _logger;
+        _iBookService = bookService;
+    }
 
-        public BookController(BookService bookService, ILogger<BookController> logger)
+    [HttpPost]
+    public async Task<IActionResult> AddBook([FromBody] BookDTO bookDTO)
+    {
+        var bookResponse = await _iBookService.AddBookAsync(bookDTO);
+        return CreatedAtAction(nameof(GetBookById), new { id = bookResponse.Id }, bookResponse);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllBooks()
+    {
+        var books = await _iBookService.GetAllBooksAsync();
+        return Ok(books);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetBookById(Guid id)
+    {
+        var book = await _iBookService.GetBookByIdAsync(id);
+        if (book == null)
         {
-            _bookService = bookService;
-            _logger = logger;
+            return NotFound("Livro não encontrado.");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddBook([FromBody] Book book)
-        {
-            try
-            {
-                var bookResponse = await _bookService.AddBookAsync(book);
-                return CreatedAtAction(nameof(GetBooks), new { id = bookResponse.Id }, bookResponse);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao adicionar o livro.");
-                return StatusCode(500, "Ocorreu um erro ao adicionar o livro.");
-            }
-        }
+        return Ok(book);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> GetBooks()
-        {
-            try
-            {
-                var books = await _bookService.GetAllBooksAsync();
-                return Ok(books);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao recuperar os livros.");
-                return StatusCode(500, "Ocorreu um erro ao recuperar os livros.");
-            }
-        }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateBook(Guid id, [FromBody] BookDTO bookDTO)
+    {
+        var updatedBook = await _iBookService.UpdateBookAsync(id, bookDTO);
+        return Ok(updatedBook);
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBook(Guid id, [FromBody] Book book)
-        {
-            try
-            {
-                var updatedBook = await _bookService.UpdateBookAsync(id, book);
-                return Ok(updatedBook);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound("Livro não encontrado.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao atualizar o livro com ID {Id}", id);
-                return StatusCode(500, "Ocorreu um erro ao atualizar o livro.");
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBook(Guid id)
-        {
-            try
-            {
-                await _bookService.RemoveBookAsync(id);
-                return Ok("Livro removido com sucesso.");
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound("Livro não encontrado.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao remover o livro com ID {Id}", id);
-                return StatusCode(500, "Ocorreu um erro ao remover o livro.");
-            }
-        }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> RemoveBook(Guid id)
+    {
+        await _iBookService.RemoveBookAsync(id);
+        return NoContent();
     }
 }

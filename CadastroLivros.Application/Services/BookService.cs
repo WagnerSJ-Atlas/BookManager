@@ -1,82 +1,82 @@
+using CadastroLivros.Application.DTOs;
+using CadastroLivros.Application.Views;
+using CadastroLivros.Application.Interfaces;
 using CadastroLivros.Domain.Entities;
-using CadastroLivros.Domain.Validators;
 using CadastroLivros.Domain.Interfaces;
+using CadastroLivros.Domain.Validators;
+using Mapster;
 
 public class BookService : IBookService
 {
     private readonly IBookRepository _bookRepository;
     private readonly BookValidator _bookValidator;
 
-    public BookService(IBookRepository bookRepository)
+    public BookService(IBookRepository bookRepository, BookValidator bookValidator)
     {
         _bookRepository = bookRepository;
-        _bookValidator = new BookValidator();
+        _bookValidator = bookValidator;
     }
 
-    public async Task<Book> AddBookAsync(Book book)
+    public async Task<BookView> AddBookAsync(BookDTO bookDTO)
     {
+        var book = bookDTO.Adapt<Book>(); // Converte DTO para Entidade
+
         var validationResult = _bookValidator.Validate(book);
         if (!validationResult.IsValid)
         {
             throw new ArgumentException("Erro de validação: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
         }
 
-        return await _bookRepository.AddAsync(book);
+        var createdBook = await _bookRepository.AddAsync(book);
+        return createdBook.Adapt<BookView>(); // Converte Entidade para View
     }
 
-    public async Task<Book> UpdateBookAsync(Guid id, Book book)
+    public async Task<IEnumerable<BookView>> GetAllBooksAsync()
     {
-        if (id != book.Id)
-        {
-            throw new ArgumentException("O ID passado não corresponde ao ID do livro.");
-        }
+        var books = await _bookRepository.GetAllAsync();
+        return books.Adapt<IEnumerable<BookView>>(); // Converte Entidades para Views
+    }
 
+    public async Task<BookView?> GetBookByIdAsync(Guid id)
+    {
+        var book = await _bookRepository.GetByIdAsync(id);
+        return book?.Adapt<BookView>(); // Converte Entidade para View
+    }
+
+    public async Task<IEnumerable<BookView>> GetBooksByFilterAsync(string? title, string? author, DateTime? publicationDate, string? category)
+    {
+        var books = await _bookRepository.GetByFilterAsync(title, author, publicationDate, category);
+        return books.Adapt<IEnumerable<BookView>>(); // Converte Entidades para Views
+    }
+
+    public async Task<BookView> UpdateBookAsync(Guid id, BookDTO bookDTO)
+    {
         var existingBook = await _bookRepository.GetByIdAsync(id);
         if (existingBook == null)
         {
             throw new KeyNotFoundException("Livro não encontrado.");
         }
 
-        var validationResult = _bookValidator.Validate(book);
+        // Atualiza os valores da entidade com os dados do DTO
+        existingBook.Title = bookDTO.Title;
+        existingBook.Author = bookDTO.Author;
+        existingBook.PublicationDate = bookDTO.PublicationDate;
+        existingBook.Category = bookDTO.Category;
+        existingBook.Publisher = bookDTO.Publisher;
+        existingBook.ISBN13 = bookDTO.ISBN13;
+
+        var validationResult = _bookValidator.Validate(existingBook);
         if (!validationResult.IsValid)
         {
             throw new ArgumentException("Erro de validação: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
         }
 
-        existingBook.Title = book.Title;
-        existingBook.Author = book.Author;
-        existingBook.PublicationDate = book.PublicationDate;
-        existingBook.Category = book.Category;
-        existingBook.Publisher = book.Publisher;
-        existingBook.ISBN13 = book.ISBN13;
-
-        return await _bookRepository.UpdateAsync(existingBook);
+        var updatedBook = await _bookRepository.UpdateAsync(existingBook);
+        return updatedBook.Adapt<BookView>(); // Converte Entidade para View
     }
 
     public async Task RemoveBookAsync(Guid id)
     {
-        var book = await _bookRepository.GetByIdAsync(id);
-        if (book == null)
-        {
-            throw new KeyNotFoundException("Livro não encontrado.");
-        }
-
         await _bookRepository.RemoveAsync(id);
-    }
-
-    public async Task<IEnumerable<Book>> GetAllBooksAsync()
-    {
-        return await _bookRepository.GetAllAsync();
-    }
-
-    public async Task<Book?> GetBookByIdAsync(Guid id)
-    {
-        var book = await _bookRepository.GetByIdAsync(id);
-        if (book == null)
-        {
-            throw new KeyNotFoundException("Livro não encontrado.");
-        }
-
-        return book;
     }
 }

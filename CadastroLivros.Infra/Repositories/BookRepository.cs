@@ -13,6 +13,13 @@ public class BookRepository : IBookRepository
         _context = context;
     }
 
+    public async Task<Book> AddAsync(Book book)
+    {
+        await _context.Books.AddAsync(book);
+        await _context.SaveChangesAsync();
+        return book;
+    }
+
     public async Task<IEnumerable<Book>> GetAllAsync()
     {
         return await _context.Books.ToListAsync();
@@ -37,13 +44,6 @@ public class BookRepository : IBookRepository
                         (publicationDate == null || b.PublicationDate == publicationDate) &&
                         (category == null || b.Category.Contains(category)))
             .ToListAsync();
-    }
-
-    public async Task<Book> AddAsync(Book book)
-    {
-        await _context.Books.AddAsync(book);
-        await _context.SaveChangesAsync();
-        return book;
     }
 
     public async Task<Book> UpdateAsync(Book book)
