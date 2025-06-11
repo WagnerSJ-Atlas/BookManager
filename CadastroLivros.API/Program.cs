@@ -3,6 +3,8 @@ using CadastroLivros.Domain.Interfaces;
 using CadastroLivros.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using CadastroLivros.Application.Mappings;
+using CadastroLivros.Domain.Validators;
+using CadastroLivros.Application.Interfaces;
 
 MapsterConfig.RegisterMappings();
 
@@ -15,7 +17,8 @@ builder.Services.AddDbContext<BookDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
-builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<BookValidator>();
 
 builder.Services.AddControllers();
 
